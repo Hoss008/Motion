@@ -9,8 +9,8 @@ import { motion, useMotionValue, useSpring } from "motion/react";
 function MagneticCursor() {
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
-  const springX = useSpring(x, { stiffness: 400, damping: 35 });
-  const springY = useSpring(y, { stiffness: 400, damping: 35 });
+  const springX = useSpring(x, { stiffness: 800, damping: 50 });
+  const springY = useSpring(y, { stiffness: 800, damping: 50 });
 
   useEffect(() => {
     // Don't run on touch devices
@@ -24,9 +24,15 @@ function MagneticCursor() {
   }, []);
 
   // Don't render on touch devices
-  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return null;
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(pointer: coarse)").matches
+  )
+    return null;
 
-  return <motion.div className="custom-cursor" style={{ x: springX, y: springY }} />;
+  return (
+    <motion.div className="custom-cursor" style={{ x: springX, y: springY }} />
+  );
 }
 
 /* ================================
@@ -79,7 +85,6 @@ function App() {
   );
 }
 
-
 function Navbar() {
   const [open, setOpen] = useState(false);
 
@@ -97,15 +102,55 @@ function Navbar() {
 
         {/* Desktop links */}
         <div className="navbar-links">
-          <motion.a href="#projects" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>Projects</motion.a>
-          <motion.a href="#about" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>About</motion.a>
-          <motion.a href="#notes" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>Notes</motion.a>
-          <motion.a href="#contact" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>Contact</motion.a>
-          <motion.a href="#get-template" className="cta-link" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}>Get template</motion.a>
+          <motion.a
+            href="#projects"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            Projects
+          </motion.a>
+          <motion.a
+            href="#about"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            About
+          </motion.a>
+          <motion.a
+            href="#notes"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            Notes
+          </motion.a>
+          <motion.a
+            href="#contact"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            Contact
+          </motion.a>
+          <motion.a
+            href="#get-template"
+            className="cta-link"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            Get template
+          </motion.a>
         </div>
 
         {/* Hamburger button */}
-        <button className="hamburger" onClick={() => setOpen(!open)} aria-label="Toggle menu">
+        <button
+          className="hamburger"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
           <span className={`bar ${open ? "open" : ""}`} />
           <span className={`bar ${open ? "open" : ""}`} />
           <span className={`bar ${open ? "open" : ""}`} />
@@ -121,17 +166,30 @@ function Navbar() {
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.25 }}
         >
-          <a href="#projects" onClick={() => setOpen(false)}>Projects</a>
-          <a href="#about" onClick={() => setOpen(false)}>About</a>
-          <a href="#notes" onClick={() => setOpen(false)}>Notes</a>
-          <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
-          <a href="#get-template" className="cta-link" onClick={() => setOpen(false)}>Get template</a>
+          <a href="#projects" onClick={() => setOpen(false)}>
+            Projects
+          </a>
+          <a href="#about" onClick={() => setOpen(false)}>
+            About
+          </a>
+          <a href="#notes" onClick={() => setOpen(false)}>
+            Notes
+          </a>
+          <a href="#contact" onClick={() => setOpen(false)}>
+            Contact
+          </a>
+          <a
+            href="#get-template"
+            className="cta-link"
+            onClick={() => setOpen(false)}
+          >
+            Get template
+          </a>
         </motion.div>
       )}
     </nav>
   );
 }
-
 
 function Hero() {
   return (
@@ -167,12 +225,15 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <a href="https://github.com/Hoss008" target="_blank" rel="noreferrer" className="hero-preview github-pill">
+          <a
+            href="https://github.com/Hoss008"
+            target="_blank"
+            rel="noreferrer"
+            className="hero-preview github-pill"
+          >
             🔗 github.com/hossam
           </a>
-          <button className="hero-cta-btn">
-            Hire me →
-          </button>
+          <button className="hero-cta-btn">Hire me →</button>
         </motion.div>
       </div>
     </section>
@@ -335,7 +396,7 @@ function CTA() {
           className="cta-subtitle"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 , delay:0.2 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           Have a project in mind? I'd love to hear about it.
         </motion.p>
@@ -346,11 +407,21 @@ function CTA() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <Magnetic>
-            <motion.button className="btn-primary" whileHover={{ scale: 1.05, y: -2 }}>Start a project</motion.button>
+            <motion.button
+              className="btn-primary"
+              whileHover={{ scale: 1.05, y: -2 }}
+            >
+              Start a project
+            </motion.button>
           </Magnetic>
           <Magnetic>
             <a href="/Hossam Hassan.pdf" target="_blank" rel="noreferrer">
-              <motion.button className="btn-outline" whileHover={{ scale: 1.05, y: -2 }}>View resume</motion.button>
+              <motion.button
+                className="btn-outline"
+                whileHover={{ scale: 1.05, y: -2 }}
+              >
+                View resume
+              </motion.button>
             </a>
           </Magnetic>
         </motion.div>

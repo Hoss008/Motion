@@ -22,7 +22,7 @@ body {
 
 /* === CUSTOM CURSOR — mouse only === */
 @media (pointer: fine) {
-  body { cursor: none; }
+  body, a, button { cursor: none; }
 
   .custom-cursor {
     position: fixed;
