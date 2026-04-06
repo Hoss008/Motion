@@ -99,7 +99,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.2 }}
         >
-          a product design partner with focus on <em>no-code websites</em>
+          a Front-end developer with focus on <em>great user experiences</em>
         </motion.h1>
 
         <motion.div
@@ -108,12 +108,11 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <div className="hero-preview">
-            <img src="/Proj Img1.png" alt="preview" />
-          </div>
+          <a href="https://github.com/Hoss008" target="_blank" rel="noreferrer" className="hero-preview github-pill">
+            🔗 github.com/hossam
+          </a>
           <button className="hero-cta-btn">
-            Remix for free
-            <span className="new-badge">NEW</span>
+            Hire me →
           </button>
         </motion.div>
       </div>
@@ -260,12 +259,6 @@ function About() {
   );
 }
 
-/* ================================
-   CTA SECTION
-   - Subtitle: fade up with delay
-   - Buttons: fade up with more delay
-   - Buttons: whileHover={{ scale: 1.05, y: -2 }}
-   ================================ */
 function CTA() {
   return (
     <section className="cta-section">
