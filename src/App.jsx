@@ -85,7 +85,7 @@ function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            Hey, I'm Nick <span>👋</span>
+            Hey, I'm Hossam  <span>👋</span>
           </motion.span>
           <span className="availability">
             <span className="availability-dot"></span>
@@ -262,8 +262,6 @@ function About() {
 
 /* ================================
    CTA SECTION
-   TODO: Add animations!
-   - Heading: fade up on scroll (whileInView)
    - Subtitle: fade up with delay
    - Buttons: fade up with more delay
    - Buttons: whileHover={{ scale: 1.05, y: -2 }}
@@ -273,9 +271,14 @@ function CTA() {
     <section className="cta-section">
       <div className="container">
         <p className="cta-label">Get in touch</p>
-        <h2 className="cta-heading">
+        <motion.h2
+          className="cta-heading"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           Let's build something <em>amazing</em> together
-        </h2>
+        </motion.h2>
         <p className="cta-subtitle">
           Have a project in mind? I'd love to hear about it.
         </p>
@@ -290,14 +293,18 @@ function CTA() {
 
 /* ================================
    FOOTER
-   TODO: Add animations!
    - Fade in on scroll (whileInView)
    ================================ */
 function Footer() {
   return (
-    <footer className="footer">
+    <motion.footer
+      className="footer"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="container">
-        <span className="footer-left">© 2026 nitro. All rights reserved.</span>
+        <span className="footer-left">© 2026 MMS. All rights reserved.</span>
         <div className="footer-links">
           <a href="#">Twitter</a>
           <a href="#">Dribbble</a>
@@ -305,7 +312,7 @@ function Footer() {
           <a href="#">Instagram</a>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
 
