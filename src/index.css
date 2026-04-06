@@ -451,12 +451,93 @@ ul { list-style: none; }
   color: #fff;
 }
 
+/* === HAMBURGER === */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Animate bars into X when open */
+.hamburger .bar:nth-child(1).open { transform: translateY(7px) rotate(45deg); }
+.hamburger .bar:nth-child(2).open { opacity: 0; }
+.hamburger .bar:nth-child(3).open { transform: translateY(-7px) rotate(-45deg); }
+
+/* === MOBILE MENU === */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 16px 20px 20px;
+  background: rgba(10, 10, 10, 0.97);
+  border-top: 1px solid #1a1a1a;
+}
+
+.mobile-menu a {
+  padding: 14px 0;
+  font-size: 1rem;
+  color: #888;
+  border-bottom: 1px solid #111;
+  transition: color 0.2s;
+}
+
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: #fff; }
+.mobile-menu .cta-link {
+  color: #fff;
+  font-weight: 500;
+  background: none;
+  border: none;
+  padding: 14px 0;
+}
+
 /* === RESPONSIVE === */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .about-grid { gap: 48px; }
+  .hero-title { max-width: 700px; }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
+
+  /* Navbar */
   .navbar-links { display: none; }
+  .hamburger { display: flex; }
+
+  /* Hero */
+  .hero-meta { flex-wrap: wrap; gap: 10px; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .github-pill { font-size: 0.8rem; }
+
+  /* About */
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-stats { gap: 40px; }
-  .project-card-image { height: 280px; }
+  .about-stats { gap: 32px; flex-wrap: wrap; }
+
+  /* Projects */
+  .project-card-image { height: 240px; }
+  .project-card-title { font-size: clamp(1.5rem, 5vw, 2.5rem); }
+
+  /* CTA */
   .cta-buttons { flex-direction: column; align-items: center; }
+
+  /* Footer */
+  .footer .container { flex-direction: column; gap: 20px; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
 }
+

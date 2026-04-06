@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./index.css";
 import { motion } from "motion/react";
 
@@ -14,7 +15,10 @@ function App() {
   );
 }
 
+
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <nav className="navbar">
       <div className="container">
@@ -26,53 +30,44 @@ function Navbar() {
         >
           MMS
         </motion.div>
+
+        {/* Desktop links */}
         <div className="navbar-links">
-          <motion.a
-            href="#projects"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            Projects
-          </motion.a>
-          <motion.a
-            href="#about"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            About
-          </motion.a>
-          <motion.a
-            href="#notes"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            Notes
-          </motion.a>
-          <motion.a
-            href="#contact"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            Contact
-          </motion.a>
-          <motion.a
-            href="#get-template"
-            className="cta-link"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            Get template
-          </motion.a>
+          <motion.a href="#projects" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>Projects</motion.a>
+          <motion.a href="#about" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>About</motion.a>
+          <motion.a href="#notes" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>Notes</motion.a>
+          <motion.a href="#contact" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>Contact</motion.a>
+          <motion.a href="#get-template" className="cta-link" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}>Get template</motion.a>
         </div>
+
+        {/* Hamburger button */}
+        <button className="hamburger" onClick={() => setOpen(!open)} aria-label="Toggle menu">
+          <span className={`bar ${open ? "open" : ""}`} />
+          <span className={`bar ${open ? "open" : ""}`} />
+          <span className={`bar ${open ? "open" : ""}`} />
+        </button>
       </div>
+
+      {/* Mobile drawer */}
+      {open && (
+        <motion.div
+          className="mobile-menu"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.25 }}
+        >
+          <a href="#projects" onClick={() => setOpen(false)}>Projects</a>
+          <a href="#about" onClick={() => setOpen(false)}>About</a>
+          <a href="#notes" onClick={() => setOpen(false)}>Notes</a>
+          <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
+          <a href="#get-template" className="cta-link" onClick={() => setOpen(false)}>Get template</a>
+        </motion.div>
+      )}
     </nav>
   );
 }
+
 
 function Hero() {
   return (
