@@ -51,8 +51,8 @@ function Magnetic({ children }) {
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 600, damping: 30 });
-  const springY = useSpring(y, { stiffness: 600, damping: 30 });
+  const springX = useSpring(x, { stiffness: 200, damping: 20 });
+  const springY = useSpring(y, { stiffness: 200, damping: 20 });
 
   const handleMouseMove = (e) => {
     const rect = ref.current.getBoundingClientRect();
@@ -129,7 +129,7 @@ function App() {
             key="loader"
             className="loader-screen"
             exit={{ y: "-100%" }}
-            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
           >
             <motion.div className="loader-text-wrapper">
               <motion.div
