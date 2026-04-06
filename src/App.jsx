@@ -13,6 +13,8 @@ function MagneticCursor() {
   const springY = useSpring(y, { stiffness: 400, damping: 35 });
 
   useEffect(() => {
+    // Don't run on touch devices
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     const move = (e) => {
       x.set(e.clientX - 10);
       y.set(e.clientY - 10);
@@ -20,6 +22,9 @@ function MagneticCursor() {
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, []);
+
+  // Don't render on touch devices
+  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return null;
 
   return <motion.div className="custom-cursor" style={{ x: springX, y: springY }} />;
 }
