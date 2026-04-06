@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import "./index.css";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  AnimatePresence,
+} from "motion/react";
 
 /* ================================
    MAGNETIC CURSOR
@@ -72,9 +77,40 @@ function Magnetic({ children }) {
 }
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Hide loader after 1.5 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <MagneticCursor />
+
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            key="loader"
+            className="loader-screen"
+            exit={{ y: "-100%" }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          >
+            <motion.div
+              className="loader-text"
+              initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            >
+              ARCHITECTURE IS <span>SYNTAX IN SPACE</span>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Navbar />
       <Hero />
       <Projects />

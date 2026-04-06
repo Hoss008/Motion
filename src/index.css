@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=Oswald:wght@400;500;700&display=swap');
 
 /* === RESET === */
 *, *::before, *::after {
@@ -17,7 +17,38 @@ body {
   background: #0a0a0a;
   color: #fff;
   overflow-x: hidden;
-  /* custom cursor — only on non-touch devices */
+/* custom cursor — only on non-touch devices */
+}
+
+/* === LOADER SCREEN === */
+.loader-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a0a0a;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 4.2rem);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: #f5f5f5;
+  text-transform: uppercase;
+}
+
+.loader-text em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
 }
 
 /* === CUSTOM CURSOR — mouse only === */
