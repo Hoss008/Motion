@@ -1,10 +1,69 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./index.css";
-import { motion } from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
+
+/* ================================
+   MAGNETIC CURSOR
+   A smooth custom cursor that follows the mouse with spring physics.
+   ================================ */
+function MagneticCursor() {
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
+  const springX = useSpring(x, { stiffness: 400, damping: 35 });
+  const springY = useSpring(y, { stiffness: 400, damping: 35 });
+
+  useEffect(() => {
+    const move = (e) => {
+      x.set(e.clientX - 10);
+      y.set(e.clientY - 10);
+    };
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, []);
+
+  return <motion.div className="custom-cursor" style={{ x: springX, y: springY }} />;
+}
+
+/* ================================
+   MAGNETIC WRAPPER
+   Wrap any element with <Magnetic> to make it pull toward the cursor.
+   ================================ */
+function Magnetic({ children }) {
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 800, damping: 50 });
+  const springY = useSpring(y, { stiffness: 800, damping: 50 });
+
+  const handleMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    x.set((e.clientX - centerX) * 0.35);
+    y.set((e.clientY - centerY) * 0.35);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ x: springX, y: springY, display: "inline-block" }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 function App() {
   return (
     <>
+      <MagneticCursor />
       <Navbar />
       <Hero />
       <Projects />
@@ -281,10 +340,14 @@ function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <motion.button className="btn-primary" whileHover={{ scale: 1.05, y: -2 }}>Start a project</motion.button>
-          <a href="/Hossam Hassan.pdf" target="_blank" rel="noreferrer">
-            <motion.button className="btn-outline" whileHover={{ scale: 1.05, y: -2 }}>View resume</motion.button>
-          </a>
+          <Magnetic>
+            <motion.button className="btn-primary" whileHover={{ scale: 1.05, y: -2 }}>Start a project</motion.button>
+          </Magnetic>
+          <Magnetic>
+            <a href="/Hossam Hassan.pdf" target="_blank" rel="noreferrer">
+              <motion.button className="btn-outline" whileHover={{ scale: 1.05, y: -2 }}>View resume</motion.button>
+            </a>
+          </Magnetic>
         </motion.div>
       </div>
     </section>
