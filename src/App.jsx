@@ -287,7 +287,9 @@ function CTA() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <motion.button className="btn-primary" whileHover={{ scale: 1.05, y: -2 }}>Start a project</motion.button>
-          <motion.button className="btn-outline" whileHover={{ scale: 1.05, y: -2 }}>View resume</motion.button>
+          <a href="/Hossam Hassan.pdf" target="_blank" rel="noreferrer">
+            <motion.button className="btn-outline" whileHover={{ scale: 1.05, y: -2 }}>View resume</motion.button>
+          </a>
         </motion.div>
       </div>
     </section>
