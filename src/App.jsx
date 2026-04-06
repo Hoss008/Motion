@@ -85,7 +85,7 @@ function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            Hey, I'm Hossam  <span>👋</span>
+            Hey, I'm Hossam <span>👋</span>
           </motion.span>
           <span className="availability">
             <span className="availability-dot"></span>
@@ -279,22 +279,28 @@ function CTA() {
         >
           Let's build something <em>amazing</em> together
         </motion.h2>
-        <p className="cta-subtitle">
+        <motion.p
+          className="cta-subtitle"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 , delay:0.2 }}
+        >
           Have a project in mind? I'd love to hear about it.
-        </p>
-        <div className="cta-buttons">
-          <button className="btn-primary">Start a project</button>
-          <button className="btn-outline">View resume</button>
-        </div>
+        </motion.p>
+        <motion.div
+          className="cta-buttons"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <motion.button className="btn-primary" whileHover={{ scale: 1.05, y: -2 }}>Start a project</motion.button>
+          <motion.button className="btn-outline" whileHover={{ scale: 1.05, y: -2 }}>View resume</motion.button>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-/* ================================
-   FOOTER
-   - Fade in on scroll (whileInView)
-   ================================ */
 function Footer() {
   return (
     <motion.footer
