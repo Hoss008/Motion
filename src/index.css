@@ -44,6 +44,10 @@ body {
   text-transform: uppercase;
 }
 
+.loader-text-wrapper {
+  overflow: hidden;
+}
+
 .loader-text em {
   font-family: 'Instrument Serif', serif;
   font-style: italic;

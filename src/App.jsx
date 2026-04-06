@@ -5,6 +5,9 @@ import {
   useMotionValue,
   useSpring,
   AnimatePresence,
+  animate,
+  useTransform,
+  useInView,
 } from "motion/react";
 
 /* ================================
@@ -48,8 +51,8 @@ function Magnetic({ children }) {
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 800, damping: 50 });
-  const springY = useSpring(y, { stiffness: 800, damping: 50 });
+  const springX = useSpring(x, { stiffness: 600, damping: 30 });
+  const springY = useSpring(y, { stiffness: 600, damping: 30 });
 
   const handleMouseMove = (e) => {
     const rect = ref.current.getBoundingClientRect();
@@ -76,6 +79,35 @@ function Magnetic({ children }) {
   );
 }
 
+/* ================================
+   COUNTER COMPONENT
+   Animates a number from 0 to its target when it scrolls into view.
+   ================================ */
+function Counter({ to, delay = 0, suffix = "" }) {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, Math.round);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, to, { 
+        duration: 2, 
+        delay: delay, 
+        ease: "easeOut" 
+      });
+      return () => controls.stop();
+    }
+  }, [count, to, delay, isInView]);
+
+  return (
+    <h3 ref={ref}>
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </h3>
+  );
+}
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -97,15 +129,17 @@ function App() {
             key="loader"
             className="loader-screen"
             exit={{ y: "-100%" }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           >
-            <motion.div
-              className="loader-text"
-              initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            >
-              ARCHITECTURE IS <span>SYNTAX IN SPACE</span>
+            <motion.div className="loader-text-wrapper">
+              <motion.div
+                className="loader-text"
+                initial={{ y: "100%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              >
+                ARCHITECTURE IS <span>SYNTAX IN SPACE</span>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
@@ -386,7 +420,7 @@ function About() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <h3>50+</h3>
+                <Counter to={50} delay={0.1} suffix="+" />
                 <p>Projects completed</p>
               </motion.div>
               <motion.div
@@ -395,7 +429,7 @@ function About() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <h3>8+</h3>
+                <Counter to={8} delay={0.2} suffix="+" />
                 <p>Years experience</p>
               </motion.div>
               <motion.div
@@ -404,7 +438,7 @@ function About() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <h3>30+</h3>
+                <Counter to={30} delay={0.3} suffix="+" />
                 <p>Happy clients</p>
               </motion.div>
             </div>
