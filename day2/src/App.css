@@ -293,7 +293,9 @@
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
-  background: #0e0f12;
+  background: #0e0f12 center / cover no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .mosaic-card::after,
@@ -550,9 +552,9 @@
   border-radius: 1rem;
   min-height: 500px;
   overflow: hidden;
-  background:
-    linear-gradient(145deg, #e6e7e8, #b2b4b9 50%, #64666d),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.22));
+  background-size: cover;
+  background-position: center;
+  background-color: #0e0f12;
   filter: grayscale(1);
 }
 
@@ -582,6 +584,9 @@
   border: 1px solid var(--line);
   border-radius: 0.5rem;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-color: #0e0f12;
 }
 
 .services-section {
@@ -636,9 +641,9 @@
   border-radius: 1rem;
   min-height: 520px;
   overflow: hidden;
-  background:
-    linear-gradient(150deg, #d9d9dc, #aeb1b8 47%, #61636c),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.2));
+  background-size: cover;
+  background-position: center;
+  background-color: #0e0f12;
   filter: grayscale(1);
 }
 

@@ -33,6 +33,15 @@ function App() {
       </header>
 
       <main className="content-wrap">
+        {/* 
+          TASK 1: HERO SECTION - Fade & Stagger Animation
+          Challenge: Animate the hero section elements with a fade-in effect on page load
+          1. Wrap hero-chip in motion.p 
+          2. Wrap h1 in motion.h1 with a delay
+          3. Wrap hero-subtitle in motion.p with more delay
+          Expected: Elements fade in and slide up one after another (stagger effect)
+          Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, transition={{ delay: 0.X }}
+        */}
         <section className="hero-section" id="home">
           <div className="smoke smoke-left" aria-hidden="true"></div>
           <div className="smoke smoke-right" aria-hidden="true"></div>
@@ -66,59 +75,123 @@ function App() {
           ))}
         </ul>
 
+        {/*
+          TASK 2: MOSAIC GALLERY - Staggered Card Reveals
+          Challenge: Animate all 9 cards with a staggered entrance using whileInView
+          1. Wrap the entire mosaic-grid in motion.div
+          2. Wrap each article in motion.article
+          3. Use StaggerContainer with staggerChildren
+          Expected: Cards appear one by one in sequence when scrolling into view
+          Hint: Use whileInView={{ opacity: 1, scale: 1 }}, initial={{ opacity: 0, scale: 0.9 }}, viewport={{ once: true }}
+          Extra Challenge: Add a hover scale effect to individual cards
+        */}
         <section className="mosaic-section" id="projects">
           <div className="mosaic-grid">
-            <article className="mosaic-card card-a tone-1">
+            <article
+              className="mosaic-card card-a"
+              style={{
+                backgroundImage:
+                  'url("https://images.pexels.com/photos/3062518/pexels-photo-3062518.jpeg?auto=compress&cs=tinysrgb&w=500")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
             </article>
 
-            <article className="mosaic-card card-b tone-2">
+            <article
+              className="mosaic-card card-b"
+              style={{
+                backgroundImage:
+                  'url("https://images.pexels.com/photos/3874361/pexels-photo-3874361.jpeg?auto=compress&cs=tinysrgb&w=500")',
+              }}
+            >
               <span className="small-pill">About Me</span>
               <a className="case-btn" href="#about">
                 View Casestudy -&gt;
               </a>
             </article>
 
-            <article className="mosaic-card card-c tone-3">
+            <article
+              className="mosaic-card card-c"
+              style={{
+                backgroundImage:
+                  'url("https://images.pexels.com/photos/3184295/pexels-photo-3184295.jpeg?auto=compress&cs=tinysrgb&w=500")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
             </article>
 
-            <article className="mosaic-card card-d tone-4">
+            <article
+              className="mosaic-card card-d"
+              style={{
+                backgroundImage:
+                  'url("https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=500")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
             </article>
 
-            <article className="mosaic-card card-e tone-color">
+            <article
+              className="mosaic-card card-e"
+              style={{
+                backgroundImage:
+                  'url("https://images.pexels.com/photos/4546548/pexels-photo-4546548.jpeg?auto=compress&cs=tinysrgb&w=500")',
+              }}
+            >
               <span className="focus-dot" aria-hidden="true"></span>
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
             </article>
 
-            <article className="mosaic-card card-f tone-5">
+            <article
+              className="mosaic-card card-f"
+              style={{
+                backgroundImage:
+                  'url("https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=500")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
             </article>
 
-            <article className="mosaic-card card-g tone-6">
+            <article
+              className="mosaic-card card-g"
+              style={{
+                backgroundImage:
+                  'url("https://images.pexels.com/photos/3624360/pexels-photo-3624360.jpeg?auto=compress&cs=tinysrgb&w=500")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
             </article>
 
-            <article className="mosaic-card card-h tone-7">
+            <article
+              className="mosaic-card card-h"
+              style={{
+                backgroundImage:
+                  'url("https://images.pexels.com/photos/3621957/pexels-photo-3621957.jpeg?auto=compress&cs=tinysrgb&w=500")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
             </article>
 
-            <article className="mosaic-card card-i tone-8">
+            <article
+              className="mosaic-card card-i"
+              style={{
+                backgroundImage:
+                  'url("https://images.pexels.com/photos/3957987/pexels-photo-3957987.jpeg?auto=compress&cs=tinysrgb&w=500")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
@@ -135,6 +208,15 @@ function App() {
           </a>
         </section>
 
+        {/*
+          TASK 3: ABOUT SECTION - Parallax & Slide In
+          Challenge: Animate the about section with parallax effect and slide-in layout
+          1. Wrap about-copy in motion.div with slideInLeft effect
+          2. Wrap about-image in motion.div with parallax using useScroll hook
+          Expected: Left text slides in, right image moves with scroll parallax
+          Hint: Use useScroll() and useTransform() to create parallax. For slide: initial={{ x: -100, opacity: 0 }}, whileInView={{ x: 0, opacity: 1 }}
+          Extra Challenge: Add a reveal animation to the skill tags list items
+        */}
         <section className="about-section" id="about">
           <div className="about-copy">
             <h2>Meet Meily</h2>
@@ -152,31 +234,71 @@ function App() {
             </ul>
           </div>
 
-          <div className="about-image" aria-hidden="true">
+          <div
+            className="about-image"
+            style={{
+              backgroundImage:
+                'url("https://images.unsplash.com/photo-1494186912313-4c5c8dd84e4e?w=500&h=600&fit=crop")',
+            }}
+            aria-hidden="true"
+          >
             <span className="focus-dot"></span>
           </div>
         </section>
 
+        {/*
+          TASK 4: RECENT WORKS - Horizontal Reveal Pattern
+          Challenge: Animate the 4 recent work cards with a sequential reveal
+          1. Wrap each recent-card in motion.article
+          2. Create a container with staggerChildren effect (offset by 0.1s)
+          Expected: Cards appear left to right with a wave motion effect
+          Hint: Use initial={{ opacity: 0, x: -50 }}, whileInView={{ opacity: 1, x: 0 }}, transition={{ type: "spring", stiffness: 100 }}
+          Extra Challenge: Add image zoom effect on hover for each card
+        */}
         <section className="recent-section">
           <h2 className="line-title">Recent Works o</h2>
 
           <div className="recent-grid">
-            <article className="recent-card tone-6">
+            <article
+              className="recent-card"
+              style={{
+                backgroundImage:
+                  'url("https://images.unsplash.com/photo-1505228395891-9a51e7e86e81?w=500&h=400&fit=crop")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
             </article>
-            <article className="recent-card tone-7">
+            <article
+              className="recent-card"
+              style={{
+                backgroundImage:
+                  'url("https://images.unsplash.com/photo-1596394516093-35fda4abbee6?w=500&h=400&fit=crop")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
             </article>
-            <article className="recent-card tone-8">
+            <article
+              className="recent-card"
+              style={{
+                backgroundImage:
+                  'url("https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=400&fit=crop")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
             </article>
-            <article className="recent-card tone-3">
+            <article
+              className="recent-card"
+              style={{
+                backgroundImage:
+                  'url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=400&fit=crop")',
+              }}
+            >
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
@@ -184,6 +306,15 @@ function App() {
           </div>
         </section>
 
+        {/*
+          TASK 5: SERVICES SECTION - Dual Layout Reveal
+          Challenge: Animate both the portfolio entries list and image with opposite directions
+          1. Wrap portfolio-entries in motion.div with slide from right
+          2. Wrap services-image in motion.div with slide from left
+          Expected: Two panels slide in from opposite sides, meet in the middle
+          Hint: Use initial={{ x: 100 }}, whileInView={{ x: 0 }} for right panel, initial={{ x: -100 }}, whileInView={{ x: 0 }} for left
+          Extra Challenge: Add a line animation to draw borders under each entry as it appears
+        */}
         <section className="services-section" id="services">
           <div className="portfolio-entries">
             <div className="entry">
@@ -198,9 +329,26 @@ function App() {
             </div>
           </div>
 
-          <div className="services-image" aria-hidden="true"></div>
+          <div
+            className="services-image"
+            style={{
+              backgroundImage:
+                'url("https://images.unsplash.com/photo-1611339555312-e607c90352fd?w=600&h=500&fit=crop")',
+            }}
+            aria-hidden="true"
+          ></div>
         </section>
 
+        {/*
+          TASK 6: TESTIMONIALS - 3D Flip Card Effect
+          Challenge: Create an interactive 3D flip effect for each testimonial card
+          1. Wrap each article in motion.article with 3D transforms
+          2. Add whileHover={{ rotateY: 10, rotateX: 5 }} for 3D tilt
+          3. Add whileInView to fade in on scroll
+          Expected: Cards appear with a fade-in on scroll, then tilt on hover with 3D perspective
+          Hint: Use perspective: 1200, rotateY, rotateX. Combine initial={{ opacity: 0, rotateY: -20 }}, whileInView={{ opacity: 1, rotateY: 0 }}
+          Extra Challenge: Add a shadow that follows the mouse position for enhanced 3D effect
+        */}
         <section className="testimonials-section" id="testimonials">
           <h2>Testimonials</h2>
           <div className="testimonial-grid">
@@ -228,6 +376,16 @@ function App() {
           </div>
         </section>
 
+        {/*
+          TASK 7: CONTACT CTA - Scale & Pulse Effect
+          Challenge: Create an attention-grabbing call-to-action with pulse animation
+          1. Wrap the entire contact-section in motion.section
+          2. Animate h2 with a scale-up effect on scroll
+          3. Add a pulsing animation to the template-btn
+          Expected: Heading scales up when entering view, button pulses to draw attention
+          Hint: Use whileInView={{ scale: 1 }}, initial={{ scale: 0.8 }}, animate={{ boxShadow: ["0px 0px 0px rgba(255,255,255,0.5)", "0px 0px 20px rgba(255,255,255,0.8)"] }}, transition={{ duration: 2, repeat: Infinity }}
+          Extra Challenge: Add a bounce effect to the button on hover combined with the pulse animation
+        */}
         <section className="contact-section" id="contact">
           <h2>Ready to elevate your brand?</h2>
           <p>
