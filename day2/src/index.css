@@ -11,22 +11,19 @@ body,
 
 body {
   font-family: "Manrope", sans-serif;
-  color: #171c2c;
+  color: #f2f2f4;
   background:
-    radial-gradient(circle at 8% 5%, rgba(255, 139, 97, 0.19), transparent 28%),
     radial-gradient(
-      circle at 90% 12%,
-      rgba(15, 139, 141, 0.18),
-      transparent 32%
+      circle at 18% 0%,
+      rgba(255, 255, 255, 0.12),
+      transparent 26%
     ),
-    repeating-linear-gradient(
-      130deg,
-      rgba(255, 255, 255, 0.1) 0,
-      rgba(255, 255, 255, 0.1) 1px,
-      transparent 1px,
-      transparent 36px
+    radial-gradient(
+      circle at 88% 14%,
+      rgba(255, 255, 255, 0.09),
+      transparent 30%
     ),
-    #f7f1e6;
+    #050506;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,262 +1,244 @@
 import "./App.css";
 
-const projects = [
-  {
-    title: "Aster Studio",
-    summary: "Brand-led portfolio site with immersive editorial sections.",
-    role: "Design + Frontend",
-    year: "2026",
-    tags: ["React", "Headless CMS", "WebGL"],
-  },
-  {
-    title: "Northline Labs",
-    summary: "Conversion-focused product landing for a B2B analytics suite.",
-    role: "UX + UI Development",
-    year: "2025",
-    tags: ["Figma", "React", "A/B Testing"],
-  },
-  {
-    title: "Field Notes",
-    summary:
-      "Digital magazine layout balancing long reads and product stories.",
-    role: "Art Direction",
-    year: "2025",
-    tags: ["Editorial", "Design System", "Motion"],
-  },
-];
-
-const services = [
-  {
-    title: "Landing Pages",
-    text: "Sharp messaging, visual hierarchy, and reusable sections that convert.",
-  },
-  {
-    title: "Portfolio Sites",
-    text: "Distinctive personal and studio websites with a strong creative voice.",
-  },
-  {
-    title: "Product Storytelling",
-    text: "Feature narratives, launch pages, and experience-focused micro-sites.",
-  },
-];
-
-const process = [
-  {
-    title: "Discover",
-    text: "Audit your goals, audience, and references to shape the structure.",
-  },
-  {
-    title: "Design",
-    text: "Craft high-fidelity layouts with a clear content and component system.",
-  },
-  {
-    title: "Deliver",
-    text: "Ship responsive React-ready sections optimized for motion enhancements.",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "The layout direction was crisp, thoughtful, and incredibly easy to animate in production.",
-    name: "Maya Chen",
-    title: "Product Designer, Ardent",
-  },
-  {
-    quote:
-      "We launched in under two weeks with a polished front-end that already felt premium.",
-    name: "Ibrahim Nassar",
-    title: "Founder, Northline Labs",
-  },
+const clients = ["Oasis", "Asterisk", "Eooks", "Opal"];
+const skills = [
+  "Product Design",
+  "Brand Identity Design",
+  "UX Design",
+  "Branding",
+  "Packaging Design",
+  "Figma",
+  "Photoshop",
 ];
 
 function App() {
   return (
-    <div className="page">
-      <header className="topbar">
-        <a className="brand" href="#home">
-          Portfolite
+    <div className="app-shell">
+      <header className="navbar">
+        <a className="brand-link" href="#home">
+          <span className="logo-mark" aria-hidden="true"></span>
+          <span>Portfolite</span>
         </a>
-        <nav className="menu" aria-label="Primary">
-          <a href="#work">Work</a>
+
+        <nav className="site-nav" aria-label="Primary">
           <a href="#services">Services</a>
-          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#testimonials">Testimonials</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a className="ghost-btn" href="#contact">
-          Let&apos;s Talk
+
+        <a className="template-btn" href="#contact">
+          Get Template
         </a>
       </header>
 
-      <main>
-        <section className="section hero" id="home">
-          <div className="hero-copy motion-target">
-            <p className="kicker">Creative Developer Portfolio</p>
-            <h1>Layout-first websites crafted for expressive motion.</h1>
-            <p className="hero-text">
-              A clean, flexible portfolio structure built in React so you can
-              focus on bringing it to life with Framer Motion.
+      <main className="content-wrap">
+        <section className="hero-section" id="home">
+          <div className="smoke smoke-left" aria-hidden="true"></div>
+          <div className="smoke smoke-right" aria-hidden="true"></div>
+
+          <p className="hero-chip">Crafting Unique Brand Identities</p>
+          <h1>Branding that you need Indeed</h1>
+          <p className="hero-subtitle">
+            Elevate your brand with custom identity and package design. Showcase
+            your story through bold visuals and strategic design solutions.
+          </p>
+
+          <div className="hero-buttons">
+            <a className="glow-btn" href="#projects">
+              Get Started Now
+            </a>
+            <a className="ghost-btn" href="#projects">
+              See Projects
+            </a>
+          </div>
+
+          <div className="scroll-row" aria-label="Scroll indicator">
+            <span>Scroll down</span>
+            <span className="scroll-mouse">0</span>
+            <span>to see projects</span>
+          </div>
+        </section>
+
+        <ul className="client-row" aria-label="Clients">
+          {clients.map((client) => (
+            <li key={client}>{client}</li>
+          ))}
+        </ul>
+
+        <section className="mosaic-section" id="projects">
+          <div className="mosaic-grid">
+            <article className="mosaic-card card-a tone-1">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+
+            <article className="mosaic-card card-b tone-2">
+              <span className="small-pill">About Me</span>
+              <a className="case-btn" href="#about">
+                View Casestudy -&gt;
+              </a>
+            </article>
+
+            <article className="mosaic-card card-c tone-3">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+
+            <article className="mosaic-card card-d tone-4">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+
+            <article className="mosaic-card card-e tone-color">
+              <span className="focus-dot" aria-hidden="true"></span>
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+
+            <article className="mosaic-card card-f tone-5">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+
+            <article className="mosaic-card card-g tone-6">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+
+            <article className="mosaic-card card-h tone-7">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+
+            <article className="mosaic-card card-i tone-8">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section className="project-cta-row">
+          <a className="all-projects" href="#projects">
+            All Projects
+          </a>
+          <a className="glow-btn" href="#contact">
+            Book a Free Call
+          </a>
+        </section>
+
+        <section className="about-section" id="about">
+          <div className="about-copy">
+            <h2>Meet Meily</h2>
+            <p>
+              I am Meily, a passionate Brand Identity and Package Designer based
+              in tokyo. I specialize in crafting bold visual identities and
+              packaging that captivate and inspire, blending creativity with
+              strategy to elevate brands.
             </p>
-            <div className="hero-actions">
-              <a className="primary-btn" href="#work">
-                Explore Projects
-              </a>
-              <a className="text-link" href="#process">
-                View Process
-              </a>
-            </div>
-            <ul className="hero-stats" aria-label="Highlights">
-              <li>
-                <strong>24</strong>
-                <span>Projects shipped</span>
-              </li>
-              <li>
-                <strong>9</strong>
-                <span>Countries reached</span>
-              </li>
-              <li>
-                <strong>6 yrs</strong>
-                <span>Industry experience</span>
-              </li>
+
+            <ul className="skill-tags" aria-label="Skills">
+              {skills.map((skill) => (
+                <li key={skill}>{skill}</li>
+              ))}
             </ul>
           </div>
 
-          <div className="hero-visual motion-target" aria-hidden="true">
-            <div className="portrait-card">
-              <div className="portrait-glow"></div>
-              <div className="portrait-grid"></div>
-              <div className="portrait-caption">
-                <span>UI Layout</span>
-                <strong>Motion-ready sections</strong>
-              </div>
+          <div className="about-image" aria-hidden="true">
+            <span className="focus-dot"></span>
+          </div>
+        </section>
+
+        <section className="recent-section">
+          <h2 className="line-title">Recent Works o</h2>
+
+          <div className="recent-grid">
+            <article className="recent-card tone-6">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+            <article className="recent-card tone-7">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+            <article className="recent-card tone-8">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+            <article className="recent-card tone-3">
+              <a className="case-btn" href="#projects">
+                View Casestudy -&gt;
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section className="services-section" id="services">
+          <div className="portfolio-entries">
+            <div className="entry">
+              <span className="entry-title">Brand Designer</span>
+              <span className="entry-company">UrbanFit Studio</span>
+              <span className="entry-date">2023-24</span>
             </div>
-            <div className="floating-chip chip-one">
-              Available for freelance
+            <div className="entry">
+              <span className="entry-title">Package Designer</span>
+              <span className="entry-company">GreenK Studio</span>
+              <span className="entry-date">2020-22</span>
             </div>
-            <div className="floating-chip chip-two">Open to remote teams</div>
           </div>
+
+          <div className="services-image" aria-hidden="true"></div>
         </section>
 
-        <section className="section work" id="work">
-          <div className="section-head">
-            <p className="kicker">Selected Work</p>
-            <h2>Recent projects built for strong visual stories.</h2>
-          </div>
-          <div className="project-grid">
-            {projects.map((project) => (
-              <article
-                className="project-card motion-target"
-                key={project.title}
-              >
-                <div className="project-thumb" aria-hidden="true"></div>
-                <div className="project-meta">
-                  <span>{project.role}</span>
-                  <span>{project.year}</span>
-                </div>
-                <h3>{project.title}</h3>
-                <p>{project.summary}</p>
-                <ul
-                  className="tag-list"
-                  aria-label={`${project.title} tech stack`}
-                >
-                  {project.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section services" id="services">
-          <div className="section-head compact">
-            <p className="kicker">Services</p>
-            <h2>Design systems and polished UI foundations.</h2>
-          </div>
-          <div className="service-grid">
-            {services.map((item) => (
-              <article className="service-card motion-target" key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section about" id="about">
-          <div className="about-copy motion-target">
-            <p className="kicker">About</p>
-            <h2>
-              I build elegant front-end layouts that make animation feel
-              natural, not forced.
-            </h2>
-          </div>
-          <aside className="about-panel motion-target">
-            <p>
-              Based in Cairo, collaborating globally. I care about strong
-              spacing, typography rhythm, and components that are easy to
-              animate.
-            </p>
-            <div className="metric-grid" aria-label="Key metrics">
-              <div>
-                <strong>38%</strong>
-                <span>Avg. bounce drop</span>
-              </div>
-              <div>
-                <strong>+54%</strong>
-                <span>Engagement lift</span>
-              </div>
-            </div>
-          </aside>
-        </section>
-
-        <section className="section process" id="process">
-          <div className="section-head compact">
-            <p className="kicker">Process</p>
-            <h2>A simple path from blank canvas to launch.</h2>
-          </div>
-          <ol className="process-list">
-            {process.map((step, index) => (
-              <li className="process-item motion-target" key={step.title}>
-                <span className="step-number">0{index + 1}</span>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="section testimonials" id="testimonials">
-          <div className="section-head compact">
-            <p className="kicker">Testimonials</p>
-            <h2>Trusted by founders, designers, and product teams.</h2>
-          </div>
+        <section className="testimonials-section" id="testimonials">
+          <h2>Testimonials</h2>
           <div className="testimonial-grid">
-            {testimonials.map((item) => (
-              <blockquote className="quote-card motion-target" key={item.name}>
-                <p>\"{item.quote}\"</p>
-                <cite>
-                  <strong>{item.name}</strong>
-                  <span>{item.title}</span>
-                </cite>
-              </blockquote>
-            ))}
+            <article>
+              <p>
+                The visual language feels premium and intentional. Every section
+                reads like a polished case-study experience.
+              </p>
+              <span>Studio North</span>
+            </article>
+            <article>
+              <p>
+                We loved how the dark aesthetic and card rhythm made our brand
+                feel modern without losing clarity.
+              </p>
+              <span>Oasis Labs</span>
+            </article>
+            <article>
+              <p>
+                Strong hierarchy, clear story, and a layout that is perfect for
+                adding scroll and reveal animations.
+              </p>
+              <span>Asterisk Team</span>
+            </article>
           </div>
         </section>
 
-        <section className="section cta" id="contact">
-          <p className="kicker">Start A Project</p>
-          <h2>Want this layout to move beautifully? Animate it your way.</h2>
-          <a className="primary-btn" href="mailto:hello@portfolite.dev">
-            hello@portfolite.dev
+        <section className="contact-section" id="contact">
+          <h2>Ready to elevate your brand?</h2>
+          <p>
+            Let us shape your next product story with a visual system built for
+            attention and conversion.
+          </p>
+          <a className="template-btn" href="mailto:hello@portfolite.dev">
+            Book a Free Call
           </a>
         </section>
       </main>
-
-      <footer className="footer">
-        <p>Portfolite Layout Practice</p>
-        <p>Built with React - Ready for Motion</p>
-      </footer>
     </div>
   );
 }
