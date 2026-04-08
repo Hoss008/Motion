@@ -14,6 +14,26 @@ const skills = [
 ];
 
 function App() {
+  // Variants for TASK 2: Mosaic Gallery Stagger Animation
+  const mosaicContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const mosaicCardVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5 },
+    },
+  };
+
   return (
     <div className="app-shell">
       <header className="navbar">
@@ -48,11 +68,27 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
           <div className="smoke smoke-left" aria-hidden="true"></div>
           <div className="smoke smoke-right" aria-hidden="true"></div>
 
-          <motion.p className="hero-chip" initial={{opacity:0, y:20}} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6,delay: 0 }} >
+          <motion.p
+            className="hero-chip"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0 }}
+          >
             Crafting Unique Brand Identities
           </motion.p>
-          <motion.h1 initial={{opacity:0, y:20}} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6,delay: 0.1 }}>Branding that you need Indeed</motion.h1>
-          <motion.p className="hero-subtitle" initial={{opacity:0, y:20}} animate={{ opacity: 1, y: 0 }} transition={{duration: 0.6, delay: 0.2 }}>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            Branding that you need Indeed
+          </motion.h1>
+          <motion.p
+            className="hero-subtitle"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Elevate your brand with custom identity and package design. Showcase
             your story through bold visuals and strategic design solutions.
           </motion.p>
@@ -83,16 +119,24 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
           TASK 2: MOSAIC GALLERY - Staggered Card Reveals
           Challenge: Animate all 9 cards with a staggered entrance using whileInView
           1. Wrap the entire mosaic-grid in motion.div
-          2. Wrap each article in motion.article
-          3. Use StaggerContainer with staggerChildren
-          Expected: Cards appear one by one in sequence when scrolling into view
-          Hint: Use whileInView={{ opacity: 1, scale: 1 }}, initial={{ opacity: 0, scale: 0.9 }}, viewport={{ once: true }}
-          Extra Challenge: Add a hover scale effect to individual cards
+          2. Wrap each motion.article in motion.motion.article
+3. Use StaggerContainer with staggerChildren
+Expected: Cards appear one by one in sequence when scrolling into view
+Hint: Use whileInView={{ opacity: 1, scale: 1 }}, initial={{ opacity: 0, scale: 0.9 }}, viewport={{ once: true }}
+Extra Challenge: Add a hover scale effect to individual cards
         */}
         <section className="mosaic-section" id="projects">
-          <div className="mosaic-grid">
-            <article
+          <motion.div
+            className="mosaic-grid"
+            variants={mosaicContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.article
               className="mosaic-card card-a"
+              variants={mosaicCardVariants}
+              whileHover={{ scale: 1.1 }}
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/3062518/pexels-photo-3062518.jpeg?auto=compress&cs=tinysrgb&w=500")',
@@ -101,10 +145,12 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
+            </motion.article>
 
-            <article
+            <motion.article
               className="mosaic-card card-b"
+              variants={mosaicCardVariants}
+              whileHover={{ scale: 1.1 }}
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/3874361/pexels-photo-3874361.jpeg?auto=compress&cs=tinysrgb&w=500")',
@@ -114,10 +160,12 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#about">
                 View Casestudy -&gt;
               </a>
-            </article>
+            </motion.article>
 
-            <article
+            <motion.article
               className="mosaic-card card-c"
+              variants={mosaicCardVariants}
+              whileHover={{ scale: 1.1 }}
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/3184295/pexels-photo-3184295.jpeg?auto=compress&cs=tinysrgb&w=500")',
@@ -126,10 +174,12 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
+            </motion.article>
 
-            <article
+            <motion.article
               className="mosaic-card card-d"
+              variants={mosaicCardVariants}
+              whileHover={{ scale: 1.1 }}
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=500")',
@@ -138,10 +188,12 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
+            </motion.article>
 
-            <article
+            <motion.article
               className="mosaic-card card-e"
+              variants={mosaicCardVariants}
+              whileHover={{ scale: 1.1 }}
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/4546548/pexels-photo-4546548.jpeg?auto=compress&cs=tinysrgb&w=500")',
@@ -151,10 +203,12 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
+            </motion.article>
 
-            <article
+            <motion.article
               className="mosaic-card card-f"
+              variants={mosaicCardVariants}
+              whileHover={{ scale: 1.1 }}
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=500")',
@@ -163,10 +217,12 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
+            </motion.article>
 
-            <article
+            <motion.article
               className="mosaic-card card-g"
+              variants={mosaicCardVariants}
+              whileHover={{ scale: 1.1 }}
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/3624360/pexels-photo-3624360.jpeg?auto=compress&cs=tinysrgb&w=500")',
@@ -175,10 +231,12 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
+            </motion.article>
 
-            <article
+            <motion.article
               className="mosaic-card card-h"
+              variants={mosaicCardVariants}
+              whileHover={{ scale: 1.1 }}
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/3621957/pexels-photo-3621957.jpeg?auto=compress&cs=tinysrgb&w=500")',
@@ -187,10 +245,12 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
+            </motion.article>
 
-            <article
+            <motion.article
               className="mosaic-card card-i"
+              variants={mosaicCardVariants}
+              whileHover={{ scale: 1.1 }}
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/3957987/pexels-photo-3957987.jpeg?auto=compress&cs=tinysrgb&w=500")',
@@ -199,8 +259,8 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
-          </div>
+            </motion.article>
+          </motion.div>
         </section>
 
         <section className="project-cta-row">
@@ -253,7 +313,7 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
         {/*
           TASK 4: RECENT WORKS - Horizontal Reveal Pattern
           Challenge: Animate the 4 recent work cards with a sequential reveal
-          1. Wrap each recent-card in motion.article
+          1. Wrap each recent-card in motion.motion.article
           2. Create a container with staggerChildren effect (offset by 0.1s)
           Expected: Cards appear left to right with a wave motion effect
           Hint: Use initial={{ opacity: 0, x: -50 }}, whileInView={{ opacity: 1, x: 0 }}, transition={{ type: "spring", stiffness: 100 }}
@@ -263,7 +323,7 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
           <h2 className="line-title">Recent Works o</h2>
 
           <div className="recent-grid">
-            <article
+            <motion.article
               className="recent-card"
               style={{
                 backgroundImage:
@@ -273,8 +333,8 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
-            <article
+            </motion.article>
+            <motion.article
               className="recent-card"
               style={{
                 backgroundImage:
@@ -284,8 +344,8 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
-            <article
+            </motion.article>
+            <motion.article
               className="recent-card"
               style={{
                 backgroundImage:
@@ -295,8 +355,8 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
-            <article
+            </motion.article>
+            <motion.article
               className="recent-card"
               style={{
                 backgroundImage:
@@ -306,7 +366,7 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
               <a className="case-btn" href="#projects">
                 View Casestudy -&gt;
               </a>
-            </article>
+            </motion.article>
           </div>
         </section>
 
@@ -346,7 +406,7 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
         {/*
           TASK 6: TESTIMONIALS - 3D Flip Card Effect
           Challenge: Create an interactive 3D flip effect for each testimonial card
-          1. Wrap each article in motion.article with 3D transforms
+          1. Wrap each motion.article in motion.motion.article with 3D transforms
           2. Add whileHover={{ rotateY: 10, rotateX: 5 }} for 3D tilt
           3. Add whileInView to fade in on scroll
           Expected: Cards appear with a fade-in on scroll, then tilt on hover with 3D perspective
@@ -356,27 +416,27 @@ Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, trans
         <section className="testimonials-section" id="testimonials">
           <h2>Testimonials</h2>
           <div className="testimonial-grid">
-            <article>
+            <motion.article>
               <p>
                 The visual language feels premium and intentional. Every section
                 reads like a polished case-study experience.
               </p>
               <span>Studio North</span>
-            </article>
-            <article>
+            </motion.article>
+            <motion.article>
               <p>
                 We loved how the dark aesthetic and card rhythm made our brand
                 feel modern without losing clarity.
               </p>
               <span>Oasis Labs</span>
-            </article>
-            <article>
+            </motion.article>
+            <motion.article>
               <p>
                 Strong hierarchy, clear story, and a layout that is perfect for
                 adding scroll and reveal animations.
               </p>
               <span>Asterisk Team</span>
-            </article>
+            </motion.article>
           </div>
         </section>
 
