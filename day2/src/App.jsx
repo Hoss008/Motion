@@ -448,27 +448,49 @@ Extra Challenge: Add a reveal animation to the skill tags list items
           Extra Challenge: Add a line animation to draw borders under each entry as it appears
         */}
         <section className="services-section" id="services">
-          <div className="portfolio-entries">
-            <div className="entry">
+          <motion.div
+            className="portfolio-entries"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
+          >
+            <motion.div
+              className="entry"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut", delay: 0.12 }}
+              viewport={{ once: true, amount: 0.25 }}
+            >
               <span className="entry-title">Brand Designer</span>
               <span className="entry-company">UrbanFit Studio</span>
               <span className="entry-date">2023-24</span>
-            </div>
-            <div className="entry">
+            </motion.div>
+            <motion.div
+              className="entry"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut", delay: 0.24 }}
+              viewport={{ once: true, amount: 0.25 }}
+            >
               <span className="entry-title">Package Designer</span>
               <span className="entry-company">GreenK Studio</span>
               <span className="entry-date">2020-22</span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div
+          <motion.div
             className="services-image"
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+            viewport={{ once: true, amount: 0.25 }}
             style={{
               backgroundImage:
                 'url("https://images.unsplash.com/photo-1611339555312-e607c90352fd?w=600&h=500&fit=crop")',
             }}
             aria-hidden="true"
-          ></div>
+          ></motion.div>
         </section>
 
         {/*
@@ -483,22 +505,40 @@ Extra Challenge: Add a reveal animation to the skill tags list items
         */}
         <section className="testimonials-section" id="testimonials">
           <h2>Testimonials</h2>
-          <div className="testimonial-grid">
-            <motion.article>
+          <div className="testimonial-grid" style={{ perspective: 1200 }}>
+            <motion.article
+              initial={{ opacity: 0, rotateY: -20 }}
+              whileInView={{ opacity: 1, rotateY: 0 }}
+              whileHover={{ rotateY: 10, rotateX: 5, scale: 1.02 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <p>
                 The visual language feels premium and intentional. Every section
                 reads like a polished case-study experience.
               </p>
               <span>Studio North</span>
             </motion.article>
-            <motion.article>
+            <motion.article
+              initial={{ opacity: 0, rotateY: -20 }}
+              whileInView={{ opacity: 1, rotateY: 0 }}
+              whileHover={{ rotateY: 10, rotateX: 5, scale: 2.02 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0.12 }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <p>
                 We loved how the dark aesthetic and card rhythm made our brand
                 feel modern without losing clarity.
               </p>
               <span>Oasis Labs</span>
             </motion.article>
-            <motion.article>
+            <motion.article
+              initial={{ opacity: 0, rotateY: -20 }}
+              whileInView={{ opacity: 1, rotateY: 0 }}
+              whileHover={{ rotateY: 10, rotateX: 5, scale: 1.02 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0.24 }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <p>
                 Strong hierarchy, clear story, and a layout that is perfect for
                 adding scroll and reveal animations.
@@ -518,16 +558,43 @@ Extra Challenge: Add a reveal animation to the skill tags list items
           Hint: Use whileInView={{ scale: 1 }}, initial={{ scale: 0.8 }}, animate={{ boxShadow: ["0px 0px 0px rgba(255,255,255,0.5)", "0px 0px 20px rgba(255,255,255,0.8)"] }}, transition={{ duration: 2, repeat: Infinity }}
           Extra Challenge: Add a bounce effect to the button on hover combined with the pulse animation
         */}
-        <section className="contact-section" id="contact">
-          <h2>Ready to elevate your brand?</h2>
+        <motion.section
+          className="contact-section"
+          id="contact"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.35 }}
+        >
+          <motion.h2
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            Ready to elevate your brand?
+          </motion.h2>
           <p>
             Let us shape your next product story with a visual system built for
             attention and conversion.
           </p>
-          <a className="template-btn" href="mailto:hello@portfolite.dev">
+          <motion.a
+            className="template-btn"
+            href="mailto:hello@portfolite.dev"
+            animate={{
+              boxShadow: [
+                "0px 0px 0px rgba(255,255,255,0.28)",
+                "0px 0px 18px rgba(255,255,255,0.5)",
+                "0px 0px 0px rgba(255,255,255,0.28)",
+              ],
+            }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.06, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
             Book a Free Call
-          </a>
-        </section>
+          </motion.a>
+        </motion.section>
       </main>
     </div>
   );
