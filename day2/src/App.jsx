@@ -1,6 +1,6 @@
 import "./App.css";
-import { motion } from "framer-motion";
-import { useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const clients = ["Oasis", "Asterisk", "Eooks", "Opal"];
 const skills = [
@@ -14,6 +14,12 @@ const skills = [
 ];
 
 function App() {
+  const aboutSectionRef = useRef(null);
+  const { scrollYProgress: aboutScrollYProgress } = useScroll({
+    target: aboutSectionRef,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(aboutScrollYProgress, [0, 1], [180, -180]);
   // Variants for TASK 2: Mosaic Gallery Stagger Animation
   const mosaicContainerVariants = {
     hidden: { opacity: 0 },
@@ -31,6 +37,24 @@ function App() {
       opacity: 1,
       scale: 1,
       transition: { duration: 0.5 },
+    },
+  };
+
+  const recentContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const recentCardVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", stiffness: 100, damping: 16 },
     },
   };
 
@@ -273,16 +297,22 @@ Extra Challenge: Add a hover scale effect to individual cards
         </section>
 
         {/*
-          TASK 3: ABOUT SECTION - Parallax & Slide In
-          Challenge: Animate the about section with parallax effect and slide-in layout
-          1. Wrap about-copy in motion.div with slideInLeft effect
-          2. Wrap about-image in motion.div with parallax using useScroll hook
-          Expected: Left text slides in, right image moves with scroll parallax
-          Hint: Use useScroll() and useTransform() to create parallax. For slide: initial={{ x: -100, opacity: 0 }}, whileInView={{ x: 0, opacity: 1 }}
-          Extra Challenge: Add a reveal animation to the skill tags list items
+TASK 3: ABOUT SECTION - Parallax & Slide In
+Challenge: Animate the about section with parallax effect and slide-in layout
+1. Wrap about-copy in motion.div with slideInLeft effect
+2. Wrap about-image in motion.div with parallax using useScroll hook
+Expected: Left text slides in, right image moves with scroll parallax
+Hint: Use useScroll() and useTransform() to create parallax. For slide: initial={{ x: -100, opacity: 0 }}, whileInView={{ x: 0, opacity: 1 }}
+Extra Challenge: Add a reveal animation to the skill tags list items
         */}
-        <section className="about-section" id="about">
-          <div className="about-copy">
+        <section className="about-section" id="about" ref={aboutSectionRef}>
+          <motion.div
+            className="about-copy"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <h2>Meet Meily</h2>
             <p>
               I am Meily, a passionate Brand Identity and Package Designer based
@@ -291,23 +321,47 @@ Extra Challenge: Add a hover scale effect to individual cards
               strategy to elevate brands.
             </p>
 
-            <ul className="skill-tags" aria-label="Skills">
+            <motion.ul
+              className="skill-tags"
+              aria-label="Skills"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.3,
+                  },
+                },
+              }}
+            >
               {skills.map((skill) => (
-                <li key={skill}>{skill}</li>
+                <motion.li
+                  key={skill}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                >
+                  {skill}
+                </motion.li>
               ))}
-            </ul>
-          </div>
+            </motion.ul>
+          </motion.div>
 
-          <div
+          <motion.div
             className="about-image"
             style={{
               backgroundImage:
-                'url("https://images.unsplash.com/photo-1494186912313-4c5c8dd84e4e?w=500&h=600&fit=crop")',
+                'url("https://images.pexels.com/photos/1493112/pexels-photo-1493112.jpeg?auto=compress&cs=tinysrgb&w=800")',
+              y: imageY,
             }}
             aria-hidden="true"
           >
             <span className="focus-dot"></span>
-          </div>
+          </motion.div>
         </section>
 
         {/*
@@ -322,9 +376,17 @@ Extra Challenge: Add a hover scale effect to individual cards
         <section className="recent-section">
           <h2 className="line-title">Recent Works o</h2>
 
-          <div className="recent-grid">
+          <motion.div
+            className="recent-grid"
+            variants={recentContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+          >
             <motion.article
               className="recent-card"
+              variants={recentCardVariants}
+              whileHover={{ scale: 1.05 }}
               style={{
                 backgroundImage:
                   'url("https://images.unsplash.com/photo-1505228395891-9a51e7e86e81?w=500&h=400&fit=crop")',
@@ -336,6 +398,8 @@ Extra Challenge: Add a hover scale effect to individual cards
             </motion.article>
             <motion.article
               className="recent-card"
+              variants={recentCardVariants}
+              whileHover={{ scale: 1.05 }}
               style={{
                 backgroundImage:
                   'url("https://images.unsplash.com/photo-1596394516093-35fda4abbee6?w=500&h=400&fit=crop")',
@@ -347,6 +411,8 @@ Extra Challenge: Add a hover scale effect to individual cards
             </motion.article>
             <motion.article
               className="recent-card"
+              variants={recentCardVariants}
+              whileHover={{ scale: 1.05 }}
               style={{
                 backgroundImage:
                   'url("https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=400&fit=crop")',
@@ -358,6 +424,8 @@ Extra Challenge: Add a hover scale effect to individual cards
             </motion.article>
             <motion.article
               className="recent-card"
+              variants={recentCardVariants}
+              whileHover={{ scale: 1.05 }}
               style={{
                 backgroundImage:
                   'url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=400&fit=crop")',
@@ -367,7 +435,7 @@ Extra Challenge: Add a hover scale effect to individual cards
                 View Casestudy -&gt;
               </a>
             </motion.article>
-          </div>
+          </motion.div>
         </section>
 
         {/*
