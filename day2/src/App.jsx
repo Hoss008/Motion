@@ -1,5 +1,6 @@
 import "./App.css";
 import { motion } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
 
 const clients = ["Oasis", "Asterisk", "Eooks", "Opal"];
 const skills = [
@@ -35,24 +36,26 @@ function App() {
 
       <main className="content-wrap">
         {/* 
-          TASK 1: HERO SECTION - Fade & Stagger Animation
-          Challenge: Animate the hero section elements with a fade-in effect on page load
-          1. Wrap hero-chip in motion.p 
-          2. Wrap h1 in motion.h1 with a delay
-          3. Wrap hero-subtitle in motion.p with more delay
-          Expected: Elements fade in and slide up one after another (stagger effect)
-          Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, transition={{ delay: 0.X }}
+TASK 1: HERO SECTION - Fade & Stagger Animation
+Challenge: Animate the hero section elements with a fade-in effect on page load
+1. Wrap hero-chip in motion.p 
+2. Wrap h1 in motion.h1 with a delay
+3. Wrap hero-subtitle in motion.p with more delay
+Expected: Elements fade in and slide up one after another (stagger effect)
+Hint: Use initial={{ opacity: 0, y: 20 }}, animate={{ opacity: 1, y: 0 }}, transition={{ delay: 0.X }}
         */}
         <section className="hero-section" id="home">
           <div className="smoke smoke-left" aria-hidden="true"></div>
           <div className="smoke smoke-right" aria-hidden="true"></div>
 
-          <p className="hero-chip">Crafting Unique Brand Identities</p>
-          <h1>Branding that you need Indeed</h1>
-          <p className="hero-subtitle">
+          <motion.p className="hero-chip" initial={{opacity:0, y:20}} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6,delay: 0 }} >
+            Crafting Unique Brand Identities
+          </motion.p>
+          <motion.h1 initial={{opacity:0, y:20}} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6,delay: 0.1 }}>Branding that you need Indeed</motion.h1>
+          <motion.p className="hero-subtitle" initial={{opacity:0, y:20}} animate={{ opacity: 1, y: 0 }} transition={{duration: 0.6, delay: 0.2 }}>
             Elevate your brand with custom identity and package design. Showcase
             your story through bold visuals and strategic design solutions.
-          </p>
+          </motion.p>
 
           <div className="hero-buttons">
             <a className="glow-btn" href="#projects">
